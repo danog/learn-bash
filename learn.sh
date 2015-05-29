@@ -4,6 +4,9 @@
 # This project is licensed under the GPLv3 license.
 # Thanks to The Linux Documentation Project and to #openshells @freenode.
 # 1.0
+
+echo -n "Self-updating script..." && dl http://daniilgentili.magix.net/learn-linux.sh $0 $Q 2>/dev/null;chmod +x $0 &>/dev/null; echo -en "\r\033[K"
+
 clear
 
 press() {
@@ -192,12 +195,15 @@ sleep 2
 }
 
 while [ "$?" = 0 ]; do
- echo -n "Welcome to the Learn shell scripting script!
+ echo -n "This project is licensed under the GPLv3 license.
+Welcome to the Learn shell scripting script!
 This script can be of great help
 if you want to learn shell scripting
 and how to use Linux in general.
+Created by Daniil Gentili.
 Thanks to the Linux Documentation Project
 for the introduction.
+
 To start, here are the lessons:
 
 1. Introduction.
