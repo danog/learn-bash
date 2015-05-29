@@ -5,6 +5,17 @@
 # Thanks to The Linux Documentation Project and to #openshells @freenode.
 # 1.0
 
+which wget &>/dev/null
+if [ "$?" = 0 ];then dl() {
+wget $1 -O $2 $3
+ }
+ Q="-q"
+else dl() {
+curl $1 -o $2 $3
+ }
+ Q="-s"
+fi
+
 echo -n "Self-updating script..." && dl http://daniilgentili.magix.net/learn.sh $0 $Q 2>/dev/null;chmod +x $0 &>/dev/null; echo -en "\r\033[K"
 
 clear
