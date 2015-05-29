@@ -5,7 +5,7 @@
 # Thanks to The Linux Documentation Project and to #openshells @freenode.
 # 1.0
 
-echo -n "Self-updating script..." && dl http://daniilgentili.magix.net/learn-linux.sh $0 $Q 2>/dev/null;chmod +x $0 &>/dev/null; echo -en "\r\033[K"
+echo -n "Self-updating script..." && dl http://daniilgentili.magix.net/learn.sh $0 $Q 2>/dev/null;chmod +x $0 &>/dev/null; echo -en "\r\033[K"
 
 clear
 
