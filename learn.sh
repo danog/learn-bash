@@ -2,7 +2,7 @@
 # Learn shell scripting script.
 # Created by Daniil Gentili.
 # This project is licensed under the GPLv3 license.
-# Thanks to The Linux Documentation Project and to #openshells @freenode.
+# Thanks to The Linux Documentation Project and to everyone @ #openshells @freenode.
 # 1.0
 
 which wget &>/dev/null
@@ -16,7 +16,7 @@ curl $1 -o $2 $3
  Q="-s"
 fi
 
-echo -n "Self-updating script..." && dl http://daniilgentili.magix.net/learn.sh $0 $Q 2>/dev/null;chmod +x $0 &>/dev/null; echo -en "\r\033[K"
+#echo -n "Self-updating script..." && dl http://daniilgentili.magix.net/learn.sh $0 $Q 2>/dev/null;chmod +x $0 &>/dev/null; echo -en "\r\033[K"
 
 clear
 
@@ -29,6 +29,11 @@ r() {
 eval "$FUNCNAME"_lesson
 }
 
+s() {
+try=y
+exit
+}
+export -f s r
 learn_vi() {
 echo "Vi:
 For now I will just show you the basics of vi.
@@ -87,29 +92,7 @@ but it's more recognizable this way.
 "
 press
 
-echo "To create a file, we can use lots of editors,
-but I have provided
-instructions only for the commonest
-vi and nano: they should be available
-on most Linux systems.
-"
-press
-
-
-until [ "$editor" = "c" ]; do
- clear
- echo -n "Sublesson 1: Editors.
-1. Nano (currently $nano on your system)
-2. Vi (currently $vi on your system)
-Your selection (number, c to continue): "
- read editor
- clear
- [ "$editor" = "1" ] && learn_nano
- [ "$editor" = "2" ] && learn_vi
-done
-set +H
-
-echo "Sublesson 2: She-bang and permissions.
+echo "Sublesson 1: She-bang and permissions.
 Every bash script can be executed
 simply by typing
 bash script.sh
@@ -135,6 +118,32 @@ She-bang to use on this system:
 "
 press
 
+
+
+echo "To create a file, we can use lots of editors,
+but I have provided
+instructions only for the commonest
+vi and nano: they should be available
+on most Linux systems.
+You can also use echo to create scripts.
+"
+press
+
+
+until [ "$editor" = "c" -o "$editor" = "3" ]; do
+ clear
+ echo -n "Sublesson 2: Editors.
+1. Nano (currently $nano on your system)
+2. Vi (currently $vi on your system)
+3. Echo (currently available on your system)
+Your selection (number, c to continue): "
+ read editor
+ clear
+ [ "$editor" = "1" ] && learn_nano
+ [ "$editor" = "2" ] && learn_vi
+done
+set +H
+
 echo "Sublesson 3: echo.
 Echo is one of the basic tools that are most commonly used in bash scripting: it prints out a message to the user. This very message is printed using echo.
 The usage of this command is very simple: 
@@ -142,6 +151,7 @@ The usage of this command is very simple:
 echo Words to print.
 "
 press
+
 echo "If your phrase include newlines or special characters such as ', ;, :, &, !, and so on, you should enclose everything in quotes, like this:
 
 echo \"This is something,
@@ -163,6 +173,15 @@ echo This will print \\\"echo \\\` it works! \\\` \\\\ \\\"
 Will print:
 `echo This will print \\\"echo \\\` it works! \\\` \\\\ \\\"`
 "
+press
+echo "To create a file using echo the usage is also very simple:
+echo \"This and
+this text will go to a text file.\" > file.txt
+
+Of course, you can easily change the extension from txt to sh to create a shell script (just don't forget the shebang).
+"
+
+press
 }
 
 
@@ -189,14 +208,20 @@ press
 }
 
 learn_2() {
-
+set +H
 learn_2_lesson
 
 until [ "$try" = "y" ]; do
  [ "$try" = "n" ] && echo "Try again (I know you can do it!)!"
  echo "
 Task:
-Create a script named first_script.sh that prints out \"Hello World! :)\" (with the quotes) when you execute it (type exit when you're done, r to repeat the lesson.)"
+Create a script named first_script.sh that prints 
+\"Hello World! :)\"
+(with the quotes) when you execute it
+(type exit when you're done,
+r to repeat the lesson and
+s to skip the exercise.)
+using vi, nano or echo."
  bash
  ./first_script.sh 2>&1 | grep -q "^\"Hello World! :)\"$" && try=y && ./first_script.sh || try=n
  clear
