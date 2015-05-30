@@ -220,11 +220,8 @@ until [ "$try" = "y" ]; do
 Task:
 Create a script named first_script.sh that prints 
 \"Hello World! :)\"
-(with the quotes) when you execute it
-(type exit when you're done,
-r to repeat the lesson and
-s to skip the exercise.)
-using vi, nano or echo."
+(with the quotes) when you execute it. Use vi, nano or echo, type exit when you're done,
+r to repeat the lesson and s to skip the exercise."
  bash
  ./first_script.sh 2>&1 | grep -q "^\"Hello World! :)\"$" && try=y && ./first_script.sh || try=n
  clear
