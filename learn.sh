@@ -30,7 +30,7 @@ read -s -p "Press enter to continue: "; echo -en "\r\033[K"
 }
 
 r() {
-eval "$current"_lesson
+eval $current
 }
 
 s() {
@@ -212,7 +212,7 @@ press
 }
 
 learn_2() {
-current="$FUNCNAME"
+current="learn_2_lesson"
 set +H
 learn_2_lesson
 
