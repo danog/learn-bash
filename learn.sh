@@ -248,6 +248,7 @@ To start, here are the lessons:
 2. My first Hello World!
 
 Your selection (number, enter q to exit.): "
+ try=
  read n
  clear
  eval learn_$n
