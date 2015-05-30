@@ -146,7 +146,6 @@ Your selection (number, c to continue): "
  [ "$editor" = "1" ] && learn_nano
  [ "$editor" = "2" ] && learn_vi
 done
-set +H
 
 echo "Sublesson 3: echo.
 Echo is one of the basic tools that are most commonly used in bash scripting: it prints out a message to the user. This very message is printed using echo.
@@ -178,9 +177,13 @@ Will print:
 `echo This will print \\\"echo \\\` it works! \\\` \\\\ \\\"`
 "
 press
+echo 'If your phrase also includes a ! followed by a letter or number you should enclose the enclose the phrase in single quotes (\').'
+press
 echo "To create a file using echo the usage is also very simple:
 echo \"This and
 this text will go to a text file.\" > file.txt
+This will recreate the file.
+To append the text, insert two >> instead of 1 >
 
 Of course, you can easily change the extension from txt to sh to create a shell script (just don't forget the shebang).
 "
