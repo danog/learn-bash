@@ -223,10 +223,10 @@ Create a script named first_script.sh that prints
 (with the quotes) when you execute it. Use vi, nano or echo, type exit when you're done,
 r to repeat the lesson and s to skip the exercise."
  bash
- ./first_script.sh 2>&1 | grep -q "^\"Hello World! :)\"$" && try=y && ./first_script.sh || try=n
+ ./first_script.sh 2>&1 | grep -q "^\"Hello World! :)\"$" && try=y && done=y && ./first_script.sh || try=n
  clear
 done
-echo "Good Job!"
+[ "$done" = "y" ] && echo "Good Job!" || echo "Come back soon!"
 sleep 2
 }
 
