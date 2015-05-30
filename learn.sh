@@ -232,7 +232,7 @@ done
 sleep 2
 }
 
-while [ "$?" = 0 ]; do
+until [ "$n" = q ]; do
  echo -n "This project is licensed under the GPLv3 license.
 Welcome to the Learn shell scripting script!
 This script can be of great help
@@ -247,7 +247,7 @@ To start, here are the lessons:
 1. Introduction.
 2. My first Hello World!
 
-Your selection (number): "
+Your selection (number, enter q to exit.): "
  read n
  clear
  eval learn_$n
