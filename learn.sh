@@ -5,6 +5,9 @@
 # Thanks to The Linux Documentation Project and to everyone @ #openshells @freenode.
 # 1.0
 
+# First checks.
+
+[ -f /bin/bash ] && bash="/bin/bash" || bash="$(which -a bash | tail -1)"
 which wget &>/dev/null
 if [ "$?" = 0 ];then dl() {
 wget $1 -O $2 $3
@@ -16,7 +19,7 @@ curl $1 -o $2 $3
  Q="-s"
 fi
 
-#echo -n "Self-updating script..." && dl http://daniilgentili.magix.net/learn.sh $0 $Q 2>/dev/null;chmod +x $0 &>/dev/null; echo -en "\r\033[K"
+echo -n "Self-updating script..." && dl http://daniilgentili.magix.net/learn.sh $0 $Q 2>/dev/null;chmod +x $0 &>/dev/null; echo -en "\r\033[K"
 
 clear
 
@@ -111,10 +114,10 @@ The she-bang is a character (#!) followed by the
 path of the bash binary,
 usually /bin/bash (in this case matches the
 current location of the binary,
-which is $BASH).
+which is $bash).
 She-bang to use on this system: 
 
-#!"$BASH"
+#!"$bash"
 "
 press
 
