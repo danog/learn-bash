@@ -166,7 +166,7 @@ and this is just a random set of special chars:
 press
 echo "If your phrase also includes one of the following special characters, apart from being quoted they also have to be escaped using a backslash (\\):
 \\\"
-\\\' if everything is enclosed in single quotes
+\\' if everything is enclosed in single quotes
 \\\$ if followed by a letter or number
 \\\`
 
