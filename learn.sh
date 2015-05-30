@@ -212,7 +212,7 @@ press
 }
 
 learn_2() {
-current="learn_2_lesson"
+export current="learn_2_lesson"
 set +H
 learn_2_lesson
 
