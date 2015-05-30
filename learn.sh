@@ -8,6 +8,7 @@
 # First checks.
 
 [ -f /bin/bash ] && bash="/bin/bash" || bash="$(which -a bash | tail -1)"
+
 which wget &>/dev/null
 if [ "$?" = 0 ];then dl() {
 wget $1 -O $2 $3
@@ -29,7 +30,7 @@ read -s -p "Press enter to continue: "; echo -en "\r\033[K"
 }
 
 r() {
-eval "$FUNCNAME"_lesson
+eval "$current"_lesson
 }
 
 s() {
@@ -211,6 +212,7 @@ press
 }
 
 learn_2() {
+current="$FUNCNAME"
 set +H
 learn_2_lesson
 
