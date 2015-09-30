@@ -1,3 +1,9 @@
+learn-bash (1.1.12) lenny; urgency=low
+
+  * trigger
+
+ -- Daniil Gentili <daniil.gentili.dg@gmail.com>  Wed, 30 Sep 2015 19:00:31 +0000
+
 learn-bash (1.1.9) lenny; urgency=low
 
   * trigger ra
