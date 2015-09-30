@@ -1,0 +1,9 @@
+# Site settings
+title: Video-dl
+tag_text: Programs to download videos
+description: Programs to download videos from virtually any website.
+
+# Build settings
+markdown: kramdown
+
+exclude: ["README.md"]
