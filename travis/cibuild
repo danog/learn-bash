@@ -47,15 +47,14 @@ cd $video
 cd debian/
 cp * old
 rm *
-cd video*
+cd learn*
 cp $video/README.md  .
 bundle exec ronn --roff README.md
 
-mv README debian/learn-bash-dl.1
+mv README debian/learn-bash.1
 rm *md
 cp $video/learn.sh learn-bash/
-echo "debian/learn-bash.1
-debian/learn-bash-it.1" > debian/learn-bash.manpages
+echo "debian/learn-bash.1" > debian/learn-bash.manpages
 dch -v $version $desc 
 $builddeb
 cd $temp

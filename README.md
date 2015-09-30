@@ -2,6 +2,10 @@
 Script to learn bash scripting.
 
 
+[![Build Status](https://travis-ci.org/danog/learn-bash.svg?branch=master)](https://travis-ci.org/danog/learn-bash)
+
+
+
 This project is licensed under the GPLv3 license.
 
 
