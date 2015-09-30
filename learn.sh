@@ -3,9 +3,9 @@
 # Created by Daniil Gentili.
 # This project is licensed under the GPLv3 license.
 # Thanks to The Linux Documentation Project and to everyone @ #openshells @freenode.
-# 1.0
+# v1.1
 
-# First checks.
+# First checks and functions.
 
 [ -f /bin/bash ] && bash="/bin/bash" || bash="$(which -a bash | tail -1)"
 
@@ -40,6 +40,7 @@ echo -n "Self-updating script..." && dl http://daniilgentili.magix.net/learn.sh 
 
 
 clear
+
 
 press() {
 echo
@@ -251,6 +252,9 @@ done
 [ "$done" = "y" ] && echo "Good Job!" || echo "Come back soon!"
 sleep 2
 }
+
+
+# Here we go!
 
 until [ "$n" = q ]; do
  echo -n "Welcome to the Learn shell scripting script!
