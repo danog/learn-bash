@@ -55,7 +55,7 @@ mv README debian/learn-bash.1
 rm *md
 cp $video/learn.sh learn-bash/
 echo "debian/learn-bash.1" > debian/learn-bash.manpages
-dch -v $version $desc 
+dch -v $version -D lenny $desc 
 $builddeb
 cd $temp
 git clone https://${GH_TOKEN}@github.com/danog/repo.git
