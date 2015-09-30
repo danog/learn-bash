@@ -43,7 +43,7 @@ busybox ftpput -u $u1 -p $p1 $ftp learn.sh
 cd $video
 
 # Generate deb
-[ "$(diff $temp/reallyold.sh $video/learn.sh)" != "" ] && {
+echo "$desc" | grep -q trigger || [ "$(diff $temp/reallyold.sh $video/learn.sh)" != "" ] && {
 cd debian/
 cp * old
 rm *
@@ -55,7 +55,7 @@ mv README debian/learn-bash.1
 rm *md
 cp $video/learn.sh learn-bash/
 echo "debian/learn-bash.1" > debian/learn-bash.manpages
-dch -v $version -D lenny $desc 
+dch -v $version -D lenny --force-distribution $desc 
 $builddeb
 cd $temp
 git clone https://${GH_TOKEN}@github.com/danog/repo.git
