@@ -1,0 +1,18 @@
+language: ruby
+rvm:
+- 2.1
+
+sudo: required
+addons:
+  apt:
+    packages:
+    - build-essential
+    - grep
+    - sed
+
+script: ". ./travis/cibuild"
+
+
+before_install:
+- openssl aes-256-cbc -pass "pass:$pass"
+  -in enc.tar.gz.enc -out enc.tar.gz -d -a

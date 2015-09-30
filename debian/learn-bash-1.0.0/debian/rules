@@ -1,0 +1,13 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+%:
+	dh $@ 
+override_dh_fixperms:
+	dh_fixperms
+	chmod 0755 debian/video-dl/usr/bin/*
+override_dh_builddeb:
+	dh_builddeb -- -Zgzip

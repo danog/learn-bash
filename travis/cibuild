@@ -1,0 +1,94 @@
+#!/usr/bin/env bash
+[ "${TRAVIS_PULL_REQUEST}" = "false" ] && [ "${TRAVIS_BRANCH}" = "master" ] && {
+# Setup everything 
+desc="$(git log -1 --pretty=%B)"
+echo "$desc" | grep -q madebytravisci && exit
+export DEBFULLNAME="Daniil Gentili"
+sudo apt-get update &>/dev/null
+sudo apt-get install busybox ruby-ronn build-essential devscripts lintian diff patch python-pip python3 patchutils gnupg expect dpkg-dev &>/dev/null
+sudo pip install pexpect
+tar -xzf enc.tar.gz
+gpg --allow-secret-key-import --import mygpgkey_sec.gpg
+
+builddeb="$PWD/builddeb"
+chmod +x ${builddeb}
+
+
+mkdir temp
+temp="$PWD/temp"
+gitsync() {
+branch="${1}"
+shift
+
+git add -A
+git commit -am "${*}"
+git push -q origin ${branch}
+
+}
+
+git clone https://${GH_TOKEN}@github.com/danog/learn-bash.git learn-bash
+cd learn-bash
+git config --global user.name "${GIT_NAME}"
+git config --global user.email "${GIT_EMAIL}"
+git config --global push.default simple
+video="$PWD"
+wget http://daniilgentili.magix.net/learn.sh -O $temp/reallyold.sh
+########################################
+version="$(git describe --tags | sed 's/-.*//').$(git describe --tags | sed 's/-[^-]*$//;s/.*-//')"
+
+cp learn.sh $temp
+cd $temp
+busybox ftpput -u $u1 -p $p1 $ftp learn.sh
+
+cd $video
+
+# Generate deb
+[ "$(diff $temp/reallyold.sh $video/learn.sh)" != "" ] && {
+cd debian/
+cp * old
+rm *
+cd video*
+cp $video/README.md  .
+bundle exec ronn --roff README.md
+
+mv README debian/learn-bash-dl.1
+rm *md
+cp $video/learn.sh learn-bash/
+echo "debian/learn-bash.1
+debian/learn-bash-it.1" > debian/learn-bash.manpages
+dch -v $version $desc 
+$builddeb
+cd $temp
+git clone https://${GH_TOKEN}@github.com/danog/repo.git
+cd repo/debs
+mkdir learn-bash-$version
+cd learn-bash-$version
+cp $video/debian/* .
+gitsync master Updated learn-bash to $version
+cd $video
+}
+
+# Generate website
+cd $video/jekyll
+echo "---
+layout: default
+---
+">index.md
+cat $video/README.md >> index.md
+
+
+cp -a * $temp
+cd $video
+gitsync master OK madebytravisci
+
+# Upload everything
+git checkout gh-pages
+rm -rf *
+cp -a $temp/* .
+
+echo "branches:
+  except:
+    - gh-pages" > .travis.yml
+gitsync gh-pages "Updated the website"
+
+}

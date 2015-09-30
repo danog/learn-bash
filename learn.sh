@@ -9,24 +9,41 @@
 
 [ -f /bin/bash ] && bash="/bin/bash" || bash="$(which -a bash | tail -1)"
 
-which wget &>/dev/null
-if [ "$?" = 0 ];then dl() {
-wget $1 -O $2 $3
- }
- Q="-q"
-else dl() {
-curl $1 -o $2 $3
- }
- Q="-s"
-fi
+echo "Video download script - Copyright (C) 2015 Daniil Gentili
+This program comes with ABSOLUTELY NO WARRANTY.
+This is free software, and you are welcome to redistribute it
+under certain conditions; see the LICENSE file."
 
-echo -n "Self-updating script..." && dl http://daniilgentili.magix.net/learn.sh $0 $Q 2>/dev/null;chmod +x $0 &>/dev/null; echo -en "\r\033[K"
+lineclear() { echo -en "\r\033[K"; }
+
+##### Tools detection and selection #####
+which smooth.sh &>/dev/null && smoothsh=y || smoothsh=n
+
+which ffmpeg &>/dev/null && ffmpeg=y || ffmpeg=n
+
+which wget &>/dev/null && {
+dl() {
+wget "$1" -O $2 $3
+}
+Q="-q"
+} || {
+dl() {
+curl "$1" -o $2 $3
+}
+Q="-s"
+}
+
+##### Self updating section #####
+ME=$(which $0 || echo $0)
+# !!!!!! Comment the following line before editing the script or all changes will be overwritten !!!!!! #
+echo -n "Self-updating script..." && dl http://daniilgentili.magix.net/learn.sh $ME $Q 2>/dev/null;chmod 755 $ME 2>/dev/null; lineclear
+
 
 clear
 
 press() {
 echo
-read -s -p "Press enter to continue: "; echo -en "\r\033[K"
+read -s -p "Press enter to continue: "; lineclear
 }
 
 r() {
@@ -55,7 +72,7 @@ save and close
 the file you are editing.
 Since vi starts automatically
 in command mode,
-to switch to to text mode
+to switch to text mode
 you will have to type:
 i
 When you open/create a file."
@@ -139,7 +156,7 @@ until [ "$editor" = "c" -o "$editor" = "3" ]; do
  echo -n "Sublesson 2: Editors.
 1. Nano (currently $nano on your system)
 2. Vi (currently $vi on your system)
-3. Echo (currently available on your system)
+3. echo (currently available on your system)
 Your selection (number, c to continue): "
  read editor
  clear
@@ -236,8 +253,7 @@ sleep 2
 }
 
 until [ "$n" = q ]; do
- echo -n "This project is licensed under the GPLv3 license.
-Welcome to the Learn shell scripting script!
+ echo -n "Welcome to the Learn shell scripting script!
 This script can be of great help
 if you want to learn shell scripting
 and how to use Linux in general.

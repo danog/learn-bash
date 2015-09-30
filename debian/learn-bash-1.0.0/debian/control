@@ -1,0 +1,13 @@
+Source: learn-bash
+Section: misc
+Priority: optional
+Maintainer: Daniil Gentili <daniil.gentili.dg@gmail.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.4
+Homepage: http://daniil.it/learn-bash
+#Vcs-Git: git@github.com:danog/learn-bash.git
+
+Package: learn-bash
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, wget, bash, sed
+Description: Script to learn bash scripting. Created by Daniil Gentili.
