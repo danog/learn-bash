@@ -4,7 +4,7 @@
 # This project is licensed under the GPLv3 license.
 # Thanks to The Linux Documentation Project and to everyone @ #openshells @freenode.
 # v1.1
-
+#
 # First checks and functions.
 
 [ -f /bin/bash ] && bash="/bin/bash" || bash="$(which -a bash | tail -1)"
