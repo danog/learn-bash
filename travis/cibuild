@@ -5,7 +5,7 @@ desc="$(git log -1 --pretty=%B)"
 echo "$desc" | grep -q madebytravisci && exit
 export DEBFULLNAME="Daniil Gentili"
 sudo apt-get update &>/dev/null
-sudo apt-get install busybox ruby-ronn build-essential devscripts lintian patch python-pip python3 patchutils gnupg expect dpkg-dev libffi-dev libssl-dev -y &>/dev/null
+sudo apt-get install busybox ruby-ronn build-essential devscripts lintian patch python-pip python3 patchutils gnupg expect dpkg-dev libffi-dev libssl-dev diff -y &>/dev/null
 sudo pip install requests[security]
 sudo -E pip install pexpect
 tar -xzf enc.tar.gz
