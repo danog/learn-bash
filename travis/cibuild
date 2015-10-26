@@ -66,6 +66,7 @@ cd learn-bash-$version
 cp $video/debian/* .
 gitsync master Updated learn-bash to $version
 cd $video
+rm -rf $temp/repo
 }
 
 # Generate website
