@@ -37,3 +37,10 @@ dh_usrlocal
 dh_link
 dh_compress
 override_dh_fixperms dh_fixperms
+dh_fixperms
+dh_installdeb
+dh_gencontrol
+dh_md5sums
+override_dh_builddeb dh_builddeb
+override_dh_builddeb dh_builddeb
+dh_builddeb

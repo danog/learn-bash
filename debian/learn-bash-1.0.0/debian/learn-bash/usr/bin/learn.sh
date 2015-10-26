@@ -9,7 +9,7 @@
 
 [ -f /bin/bash ] && bash="/bin/bash" || bash="$(which -a bash | tail -1)"
 
-echo "Video download script - Copyright (C) 2015 Daniil Gentili
+echo "Video download script - Copyright (C) 2015 Daniil Gentili (http://daniil.it)
 This program comes with ABSOLUTELY NO WARRANTY.
 This is free software, and you are welcome to redistribute it
 under certain conditions; see the LICENSE file."
@@ -17,9 +17,6 @@ under certain conditions; see the LICENSE file."
 lineclear() { echo -en "\r\033[K"; }
 
 ##### Tools detection and selection #####
-which smooth.sh &>/dev/null && smoothsh=y || smoothsh=n
-
-which ffmpeg &>/dev/null && ffmpeg=y || ffmpeg=n
 
 which wget &>/dev/null && {
 dl() {
@@ -52,7 +49,7 @@ eval $current
 }
 
 s() {
-try=y
+echo "skipy" >.learn
 exit
 }
 export -f s r
@@ -85,6 +82,7 @@ To save the file and close vi or
 Only to save the file without exiting vi.
 
 "
+press
 }
 
 learn_nano() {
@@ -96,6 +94,7 @@ nano name_of_the_file_you_want_to_create
 "
 press
 echo "Once you have written what you need, press CTRL+X and y to save and close the file or just CTRL+O only to save the file."
+press
 }
 
 
@@ -138,6 +137,7 @@ She-bang to use on this system:
 
 #!"$bash"
 "
+
 press
 
 
@@ -173,7 +173,7 @@ echo Words to print.
 "
 press
 
-echo "If your phrase include newlines or special characters such as ', ;, :, &, !, and so on, you should enclose everything in quotes, like this:
+echo "If your phrase include newlines or special characters such as ', ;, :, &, and so on, you should enclose everything in quotes, like this:
 
 echo \"This is something,
 this is something else;
@@ -182,11 +182,10 @@ and this is just a random set of special chars:
 "
 
 press
-echo "If your phrase also includes one of the following special characters, apart from being quoted they also have to be escaped using a backslash (\\):
-\\\"
-\\' if everything is enclosed in single quotes
-\\\$ if followed by a letter or number
-\\\`
+echo "If your phrase also includes one of the following special characters, apart from being quoted they also have to be escaped using a backslash:  \!, \", \`
+' if everything is enclosed in single quotes
+\$ if followed by a letter or number
+
 
 Example:
 echo This will print \\\"echo \\\` it works! \\\` \\\\ \\\"
@@ -195,9 +194,10 @@ Will print:
 `echo This will print \\\"echo \\\` it works! \\\` \\\\ \\\"`
 "
 press
-echo 'If your phrase also includes a ! followed by a letter or number you should enclose the enclose the phrase in single quotes (\').'
+echo "If your phrase also includes a "'!'" followed by a letter or number you should enclose the phrase in single quotes (')."
 press
-echo "To create a file using echo the usage is also very simple:
+
+echo "Creating a file using echo is very simple:
 echo \"This and
 this text will go to a text file.\" > file.txt
 This will recreate the file.
@@ -237,7 +237,7 @@ export current="learn_2_lesson"
 set +H
 learn_2_lesson
 
-until [ "$try" = "y" ]; do
+until [ "$try" = "y" -o "$(cat .learn)" = "skipy" ]; do
  [ "$try" = "n" ] && echo "Try again (I know you can do it!)!"
  echo "
 Task:
@@ -249,6 +249,7 @@ r to repeat the lesson and s to skip the exercise."
  ./first_script.sh 2>&1 | grep -q "^\"Hello World! :)\"$" && try=y && done=y && ./first_script.sh || try=n
  clear
 done
+rm .learn
 [ "$done" = "y" ] && echo "Good Job!" || echo "Come back soon!"
 sleep 2
 }

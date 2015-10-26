@@ -1,0 +1,10 @@
+Package: learn-bash
+Version: 1.1.27
+Architecture: all
+Maintainer: Daniil Gentili <daniil.gentili.dg@gmail.com>
+Installed-Size: 10
+Depends: wget, bash, sed
+Section: misc
+Priority: optional
+Homepage: http://daniil.it/learn-bash
+Description: Script to learn bash scripting. Created by Daniil Gentili.
