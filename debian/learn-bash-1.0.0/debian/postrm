@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "I am sorry to see you go.
+If you uninstalled this script because it didn't work properly please write to me @ 
+daniil@daniil.it
+And I will try to fix the problem."
+
+rm /usr/bin/learn-bash
+exit $?

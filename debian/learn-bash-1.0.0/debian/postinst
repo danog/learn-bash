@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "Enjoy using the script!
+For more info visit http://daniil.it"
+
+ln -s /usr/bin/learn.sh /usr/bin/learn-bash
+exit $?
