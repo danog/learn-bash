@@ -8,6 +8,6 @@
 	dh $@ 
 override_dh_fixperms:
 	dh_fixperms
-	chmod 0755 debian/video-dl/usr/bin/*
+	chmod 0755 debian/learn-bash/usr/bin/*
 override_dh_builddeb:
 	dh_builddeb -- -Zgzip
