@@ -3,11 +3,11 @@ Upstream-Name: learn-bash
 Source: https://github.com/danog/video-dl
 
 Files: *
-Copyright: 2015 Daniil Gentili <daniil@daniil.it>
+Copyright: 2016 Daniil Gentili <daniil@daniil.it>
 License: GPL-3.0+
 
 Files: debian/*
-Copyright: 2015 Daniil Gentili <daniil@daniil.it>
+Copyright: 2016 Daniil Gentili <daniil@daniil.it>
 License: GPL-3.0+
 
 License: GPL-3.0+

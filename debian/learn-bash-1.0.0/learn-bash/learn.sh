@@ -9,7 +9,7 @@
 
 [ -f /bin/bash ] && bash="/bin/bash" || bash="$(which -a bash | tail -1)"
 
-echo "Video download script - Copyright (C) 2015 Daniil Gentili (http://daniil.it)
+echo "Video download script - Copyright (C) 2016 Daniil Gentili (http://daniil.it)
 This program comes with ABSOLUTELY NO WARRANTY.
 This is free software, and you are welcome to redistribute it
 under certain conditions; see the LICENSE file."
