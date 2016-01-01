@@ -1,7 +1,7 @@
 .\" generated with Ronn/v0.7.3
 .\" http://github.com/rtomayko/ronn/tree/0.7.3
 .
-.TH "README" "" "October 2016" "" ""
+.TH "README" "" "January 2016" "" ""
 Script to learn bash scripting\.
 .
 .P
@@ -11,13 +11,48 @@ Script to learn bash scripting\.
 This project is licensed under the GPLv3 license\.
 .
 .P
-To install this script run the following command on any Linux/Unix system, including Mac OS X and iOS\.
+To install this script follow the following instructions on:
+.
+.SS "Debian\-derived distros (Ubuntu, Linux mint, Bodhi Linux, etc\.)"
+On debian\-derived distros, execute this command to add my repo to your system:
 .
 .IP "" 4
 .
 .nf
 
-wget http://daniilgentili\.magix\.net/learn\.sh && chmod +x learn\.sh
+sudo wget \-q \-O /etc/apt/sources\.list\.d/daniil\.list http://dano\.cu\.cc/1IJrcd1 && wget \-q \-O \- http://dano\.cu\.cc/1Aci9Qp | sudo apt\-key add \- && sudo apt\-key adv \-\-recv\-keys \-\-keyserver keys\.gnupg\.net 72B97FD1D9672C93 && sudo apt\-get update
+.
+.fi
+.
+.IP "" 0
+.
+.P
+You should see an OK if the operation was successful\.
+.
+.P
+And this command to install the script\.
+.
+.IP "" 4
+.
+.nf
+
+sudo apt\-get update; sudo apt\-get \-y install learn\-bash
+.
+.fi
+.
+.IP "" 0
+.
+.P
+And execute the script with this command: \fBlearn\.sh\fR
+.
+.P
+Execute this command to install the script:
+.
+.IP "" 4
+.
+.nf
+
+wget http://daniilgentili\.magix\.net/learn\.sh \-O learn\.sh || curl \-L http://daniilgentili\.magix\.net/learn\.sh \-o learn\.sh; chmod +x learn\.sh
 .
 .fi
 .
@@ -25,6 +60,25 @@ wget http://daniilgentili\.magix\.net/learn\.sh && chmod +x learn\.sh
 .
 .P
 And execute the script with this command: \fB\./learn\.sh\fR
+.
+.SS "iOS:"
+Jailbreak your device, add the following repo to Cydia,
+.
+.IP "" 4
+.
+.nf
+
+http://repo\.daniil\.it
+.
+.fi
+.
+.IP "" 0
+.
+.P
+\&\.\.\. and install mobileterminal and learn\-bash\.
+.
+.P
+Run with learn\.sh in mobileterminal\.
 .
 .P
 Happy learning! Daniil Gentili
